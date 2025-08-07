@@ -1,28 +1,9 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "startmind-frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "installCommand": "cd startmind-frontend && npm install",
-        "buildCommand": "npm run build",
-        "outputDir": "build"
-      }
-    },
-    {
-      "src": "startmind-backend/server.js",
-      "use": "@vercel/node"
-    }
-  ],
   "rewrites": [
     {
-      "source": "/api/(.*)",
+      "source": "/api/:path*",
       "destination": "/startmind-backend/server.js"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/startmind-frontend/build/index.html"
     }
   ]
 }
